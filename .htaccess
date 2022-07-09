@@ -1,0 +1,20 @@
+RewriteEngine On
+
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-l 
+
+RewriteRule ^(.+)$ index.php?url=$1 [QSA,L] 
+
+
+ErrorDocument 400: "Ups hay un error de sintaxis"
+ErrorDocument 401: "Ups Acceso no autorizado"
+ErrorDocument 403: "Ups el acceso esta prohibido"
+ErrorDocument 404: "Ups el sitio no existe"
+ErrorDocument 405: "Ups modo no permitido"
+ErrorDocument 500: "Ups error interno"
+ErrorDocument 501: "Ups sitio no implemetado"
+ErrorDocument 502: "Ups sitio sobrecargado"
+ErrorDocument 503: "Ups servicio no disponible"
+ErrorDocument 504: "Ups tiempo no disponible"
+ErrorDocument 505: "Ups version no soportada"

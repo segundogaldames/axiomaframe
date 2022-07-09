@@ -1,0 +1,10 @@
+{
+    "require": {
+        "illuminate/database": "^8.73"
+    },
+    "autoload":{
+        "psr-4": {
+            "models\\": "models/"
+        }
+    }
+}
