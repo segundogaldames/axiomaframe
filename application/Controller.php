@@ -36,9 +36,18 @@ abstract class Controller
 		}
 	}
 
-	protected function validateRol($role){
-		if (Session::get('user_role') == $role) {
-			return true;
+	protected function validateRol($roles){
+
+		if (is_array($roles)) {
+			foreach ($$roles as $role) {
+				if (Session::get('user_role') == $role) {
+					return true;
+				}
+			}
+		}else {
+			if (Session::get('user_role') == $role) {
+				return true;
+			}
 		}
 
 		$this->redirect();
@@ -192,7 +201,7 @@ abstract class Controller
 	{
 		//print_r($data);exit;
 		if ($this->decrypt($this->getAlphaNum('send')) != $this->getForm()) {
-			$this->redirect('error/noPermit');
+			$this->redirect('error/denied');
 		}
 
 		Session::set('data',$_POST);
@@ -214,10 +223,16 @@ abstract class Controller
 	protected function validatePUT()
 	{
 		if ($this->getText('_method') != 'PUT') {
-			$this->redirect('error/noPermit');
+			$this->redirect('error/denied');
 		}
 	}
 
+	protected function validateDelete()
+	{
+		if ($this->getText('_method') != 'DELETE') {
+			$this->redirect('error/denied');
+		}
+	}
 
 	public function validateUrl($url)
 	{

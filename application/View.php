@@ -59,10 +59,9 @@ class View extends Smarty
 
 		//configuracion de rutas de css, js e img para las vistas
 		$_params = array(
-			'ruta_css' => BASE_URL . 'views/layout/' . DEFAULT_LAYOUT . '/css/',
-			'ruta_js' => BASE_URL . 'views/layout/' . DEFAULT_LAYOUT . '/js/',
-			'ruta_img' => BASE_URL . 'views/layout/' . DEFAULT_LAYOUT . '/img/',
-			'ruta_shop' => BASE_URL . 'views/layout/' . DEFAULT_LAYOUT . '/shop/',
+			'route_css' => BASE_URL . 'views/layout/' . DEFAULT_LAYOUT . '/css/',
+			'route_js' => BASE_URL . 'views/layout/' . DEFAULT_LAYOUT . '/js/',
+			'route_img' => BASE_URL . 'views/layout/' . DEFAULT_LAYOUT . '/img/',
 			'menu' => $menu,
 			'item' => $item,
 			'js' => $js,

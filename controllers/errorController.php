@@ -15,14 +15,14 @@ class errorController extends Controller
 	{
 		$this->_view->assign('titulo', 'Página No Encontrada');
 		$this->_view->assign('mensaje', 'Sitio no encontrado');
-		$this->_view->renderizar('error');
+		$this->_view->render('error');
 	}
 
-	public function noPermit()
+	public function denied()
 	{
 		$this->_view->assign('titulo', 'Inaccesible');
 		$this->_view->assign('mensaje', 'Acceso no permitido');
-		$this->_view->renderizar('noPermit');
+		$this->_view->render('denied');
 	}
 
 	public function view($id = null)
