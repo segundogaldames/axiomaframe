@@ -141,7 +141,7 @@ class Helper
 
     public static function encryptPassword($password)
     {
-        $password = Hash::getHash('sha1', $password, HASH_KEY);
+        $password = Hash::getHash('sha512', $password, HASH_KEY);
 
         return $password;
     }

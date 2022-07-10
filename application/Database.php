@@ -3,7 +3,7 @@ use Illuminate\Database\Capsule\Manager as Database;
 
 $database = new Database;
 $database->addConnection([
-    'driver' => DB_HOST,
+    'driver' => DB_DRIVER,
     'host' => DB_HOST,
     'database' => DB_NAME,
     'username' => DB_USER,
