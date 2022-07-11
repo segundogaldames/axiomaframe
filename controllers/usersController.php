@@ -124,7 +124,7 @@ class usersController extends Controller
         $usuario->name = $this->getSql('name');
         $usuario->email = $this->getPostParam('email');
         $usuario->status = 1;
-        $usuario->password = Helper::encryptPassword($this->getSql('clave'));
+        $usuario->password = Helper::encryptPassword($this->getSql('password'));
         $res = $usuario->save();
 
         if ($res) {
@@ -133,7 +133,7 @@ class usersController extends Controller
             Session::set('msg_error','El usuario no se ha registrado... intente nuevamente');
         }
 
-        $this->redirect('users');
+        $this->redirect();
     }
 
     #############################################

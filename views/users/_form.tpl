@@ -44,6 +44,6 @@
         <input type="hidden" name="_method" value="PUT">
         <input type="hidden" name="send" value="{$send}">
         <button type="submit" class="btn btn-outline-success">{$button}</button>
-        <a href="{$_layoutParams.root}usuarios" class="btn btn-outline-primary">Cancelar</a>
+        <a href="{$_layoutParams.root}" class="btn btn-outline-primary">Cancelar</a>
     </form>
 </div>
