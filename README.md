@@ -27,4 +27,4 @@ Para la instalación de la mayoría de estas herramientas se pueden usar paquete
 Por supuesto que, para facilitar el proceso de aprendizaje, desarrollaremos un set de videos tutoriales para mostrar como funciona, aportando valor práctico al proceso de aprendizaje. De esta forma, el desarrollador podrá utilizarlo en sus proyectos e incluirle todo lo que le haga falta para conseguir los objetivos deseados.
 
 ***Soporte y ayuda***
-Para faciilitar el apoyo puedes comunicarte con sgaldamesh@gmail.com
+Para facilitar el apoyo puedes comunicarte con sgaldamesh@gmail.com
