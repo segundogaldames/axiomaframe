@@ -24,8 +24,6 @@ class Bootstrap
 			$routeController = ROOT . 'controllers' . DS . $controller . '.php';
 		endif;
 
-		//echo $rutaControlador;exit;
-
 		if(is_readable($routeController)):
 			require_once $routeController;
 
@@ -34,7 +32,7 @@ class Bootstrap
 			if(is_callable(array($controller, $method))):
 				$method = $request->getMethod();
 			else:
-				$methd = 'index';
+				$method = 'index';
 			endif;
 
 			if(isset($args)):
@@ -43,7 +41,6 @@ class Bootstrap
 				call_user_func(array($controller, $method));
 			endif;
 		else:
-			#throw new Exception("No encontrado");
 			header('Location: ' . BASE_URL . 'error/error/');
 		endif;
 	}

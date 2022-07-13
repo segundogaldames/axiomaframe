@@ -18,13 +18,13 @@ try{
 	require_once APP_PATH . 'Controller.php';
 	//require_once APP_PATH . 'Model.php';
 	//require_once APP_PATH . 'DBase.php';
-	require_once APP_PATH . 'Register.php';
 	require_once APP_PATH . 'Request.php';
 	require_once APP_PATH . 'View.php';
 	require_once APP_PATH . 'Database.php';
 	require_once APP_PATH . 'Session.php';
 	require_once APP_PATH . 'Hash.php';
 	require_once APP_PATH . 'Helper.php';
+	require_once APP_PATH . 'Param.php';
 
 	//echo uniqid();
 	//exit;

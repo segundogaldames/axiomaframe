@@ -1,4 +1,5 @@
 <?php
+#archivo de conexion para usar Eloquent
 use Illuminate\Database\Capsule\Manager as Database;
 
 $database = new Database;

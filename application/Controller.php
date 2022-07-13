@@ -1,20 +1,74 @@
 <?php
-//esta clase no puede ser instanciada
-abstract class Controller
+
+class Controller
 {
 	protected $_view;
 
 	public function __construct(){
 		$this->_view = new View(new Request);
 	}
-	//obliga a las clases hijas a implementar un metodo index por defecto
-	abstract function index();
-	abstract function view($id = null);
-	abstract function add();
-	abstract function new();
-	abstract function edit($id = null);
-	abstract function update($id = null);
 
+	#metodo para encriptar usando openssl
+	protected function encrypt($value)
+	{
+		$data = openssl_encrypt($value, METHODENCRIPT, KEY);
+		return $data;
+	}
+
+	#metodo para desencriptar usando openssl
+	protected function decrypt($value)
+	{
+		$data = openssl_decrypt($value, METHODENCRIPT, KEY);
+		return $data;
+	}
+
+	#metodo que crea un hash para validar formulario
+	protected function getForm()
+	{
+		$now = getdate();
+		$now = $now['year']. $now['month'] . $now['mday'] . $now['hours'];
+		if (Session::get('autenticate')) {
+			$send = Session::get('user_name') . $now;
+		}else {
+			$send = CTRL . $now;
+		}
+
+		return $send;
+	}
+
+	#metodo que recupera una libreria desde la carpeta libs
+	protected function getLibrary($library)
+	{
+		$routeLibrary = ROOT . 'libs' . DS . $library . '.php';
+
+		if(is_readable($routeLibrary)):
+			require_once $routeLibrary;
+		else:
+			throw new Exception("La librería no está disponible");
+
+		endif;
+	}
+
+	#metodo que permite enviar mensajes desde los controladores hacia las vistas
+	#mensajes de exito
+	#mensajes de error
+	protected  function getMessages(){
+		if (Session::get('msg_success')) {
+			$msg_success = Session::get('msg_success');
+			$this->_view->assign('_mensaje', $msg_success);
+			Session::destroy('msg_success');
+		}
+
+		if (Session::get('msg_error')) {
+			$msg_error = Session::get('msg_error');
+			$this->_view->assign('_error', $msg_error);
+			Session::destroy('msg_error');
+		}
+	}
+
+	#metodo alternativo para recuperar modelos
+	#se usa cuando se conecta la base de datos con la clase DBase
+	#propositos especiales o complejos
 	protected function loadModel($modelo)
 	{
 		$modelo = $modelo . 'Model';
@@ -30,88 +84,8 @@ abstract class Controller
 		endif;
 	}
 
-	protected function validateSession(){
-		if (!Session::get('autenticate')) {
-			$this->redirect('login/login');
-		}
-	}
-
-	protected function validateRol($roles){
-
-		if (is_array($roles)) {
-			foreach ($$roles as $role) {
-				if (Session::get('user_role') == $role) {
-					return true;
-				}
-			}
-		}else {
-			if (Session::get('user_role') == $role) {
-				return true;
-			}
-		}
-
-		$this->redirect();
-	}
-
-	protected  function getMessages(){
-		if (Session::get('msg_success')) {
-			$msg_success = Session::get('msg_success');
-			$this->_view->assign('_mensaje', $msg_success);
-			Session::destroy('msg_success');
-		}
-
-		if (Session::get('msg_error')) {
-			$msg_error = Session::get('msg_error');
-			$this->_view->assign('_error', $msg_error);
-			Session::destroy('msg_error');
-		}
-	}
-
-	protected function getLibrary($library)
-	{
-		$routeLibrary = ROOT . 'libs' . DS . $library . '.php';
-
-		if(is_readable($routeLibrary)):
-			require_once $routeLibrary;
-		else:
-			throw new Exception("La librería no está disponible");
-
-		endif;
-	}
-
-	//filtrar variable que viene via post en el formulario
-	protected function getText($text)
-	{
-		if(isset($_POST[$text]) && !empty($_POST[$text])):
-			$_POST[$text] = htmlspecialchars($_POST[$text], ENT_QUOTES); //transforma comillas simpes y dobles
-			return trim($_POST[$text]);
-		endif;
-
-		return '';
-	}
-
-	//metodo que valida numeros enviados via post en el formulario
-	protected function getInt($int)
-	{
-		if(isset($_POST[$int]) && !empty($_POST[$int])):
-			$_POST[$int] = filter_input(INPUT_POST, $int, FILTER_VALIDATE_INT); //valida numeros tipo integer
-			return $_POST[$int];
-		endif;
-
-		return 0;
-	}
-
-	protected function getFloat($float)
-	{
-
-		if(isset($_POST[$float]) && !empty($_POST[$float])):
-			$_POST[$float] = filter_input(INPUT_POST, $float, FILTER_VALIDATE_FLOAT); //valida numeros tipo integer
-			return $_POST[$float];
-		endif;
-
-		return 0;
-	}
-
+	#metodo que redirecciona a una ruta especifica
+	#si no se menciona la ruta, redirecciona a la raiz del proyecto
 	protected function redirect($route = false)
 	{
 		if($route):
@@ -123,47 +97,17 @@ abstract class Controller
 		endif;
 	}
 
-	//metodo que filtra un id que viene por get en un formulario o enlace
-	protected function filterInt($int)
+	#metodo que valida el uso del metodo delete en el formulario
+	#usado para eliminar un registro en la base de datos
+	protected function validateDelete()
 	{
-		$int = (int) $int;
-
-		if(is_int($int)):
-			return $int;
-		else:
-			return 0;
-		endif;
+		if ($this->getText('_method') != 'DELETE') {
+			$this->redirect('error/denied');
+		}
 	}
 
-	//metodo que devuelve los parametros sin filtrar
-	protected function getPostParam($data)
-	{
-		if(isset($_POST[$data])):
-			return $_POST[$data];
-		endif;
-	}
-
-	//metodo que filtra las inyecciones sql
-	protected function getSql($data)
-	{
-		if(isset($_POST[$data]) && !empty($_POST[$data])):
-			$_POST[$data] = strip_tags($_POST[$data]);
-
-
-			return trim($_POST[$data]);
-		endif;
-	}
-
-	//reemplaza los caracteres diferentes a los patrones de preg_replace
-	protected function getAlphaNum($data)
-	{
-		if(isset($_POST[$data]) && !empty($_POST[$data])):
-			$_POST[$data] = (string) preg_replace('/[^A-Z0-9_][*\s][?\-]/i', '', $_POST[$data]);
-			return trim($_POST[$data]);
-		endif;
-	}
-
-	public function validateEmail($email)
+	#metodo que valida un email
+	protected function validateEmail($email)
 	{
 		if(!filter_var($email, FILTER_VALIDATE_EMAIL)):
 			return false;
@@ -172,35 +116,12 @@ abstract class Controller
 		return  true;
 	}
 
-	protected function encrypt($value)
-	{
-		$data = openssl_encrypt($value, METHODENCRIPT, KEY);
-		return $data;
-	}
-
-	protected function decrypt($value)
-	{
-		$data = openssl_decrypt($value, METHODENCRIPT, KEY);
-		return $data;
-	}
-
-	protected function getForm()
-	{
-		$now = getdate();
-		$now = $now['year']. $now['month'] . $now['mday'] . $now['hours'];
-		if (Session::get('autenticate')) {
-			$send = Session::get('user_name') . $now;
-		}else {
-			$send = CTRL . $now;
-		}
-
-		return $send;
-	}
-
+	#metodo que valida campos enviados desde un formulario via POST
+	#recibe la ruta de redireccionamiento
 	protected function validateForm($route, $data)
 	{
 		//print_r($data);exit;
-		if ($this->decrypt($this->getAlphaNum('send')) != $this->getForm()) {
+		if ($this->decrypt(Param::getAlphaNum('send')) != $this->getForm()) {
 			$this->redirect('error/denied');
 		}
 
@@ -220,6 +141,8 @@ abstract class Controller
 		}
 	}
 
+	#metodo que valida el metodo PUT en el formulario
+	#usado para modificar un registro en la base de datos
 	protected function validatePUT()
 	{
 		if ($this->getText('_method') != 'PUT') {
@@ -227,33 +150,33 @@ abstract class Controller
 		}
 	}
 
-	protected function validateDelete()
-	{
-		if ($this->getText('_method') != 'DELETE') {
-			$this->redirect('error/denied');
-		}
-	}
+	#metodo que permite dar accesos a un rol o a un grupo de ellos
+	#usado en controladores
+	protected function validateRol($roles){
 
-	public function validateUrl($url)
-	{
-		if(!filter_var($url, FILTER_VALIDATE_URL)):
-			return false;
-		endif;
-
-		return true;
-	}
-
-	public function inArray($array)
-	{
-		if (is_array($array)) {
-			foreach ($_POST[$array] as $data) {
-				$array = implode(',', $data);
+		if (is_array($roles)) {
+			foreach ($$roles as $role) {
+				if (Session::get('user_role') == $role) {
+					return true;
+				}
 			}
-			return $array;
+		}else {
+			if (Session::get('user_role') == $role) {
+				return true;
+			}
 		}
-		return $_POST[$array];
+
+		$this->redirect();
 	}
 
+	#metodo que verifica la autenticacion de un usuario
+	protected function validateSession(){
+		if (!Session::get('autenticate')) {
+			$this->redirect('login/login');
+		}
+	}
+
+	#metodo que comprueba la veracidad de un RUT
 	protected function validateRut($rut)
 	{
 		$rut = preg_replace('/[^k0-9]/i', '', $rut);
@@ -281,5 +204,15 @@ abstract class Controller
 			return true;
 		else
 			return false;
+	}
+
+	#metodo que valida una url en un formulario via POST
+	public function validateUrl($url)
+	{
+		if(!filter_var($url, FILTER_VALIDATE_URL)):
+			return false;
+		endif;
+
+		return true;
 	}
 }

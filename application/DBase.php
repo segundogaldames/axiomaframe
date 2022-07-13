@@ -1,5 +1,7 @@
 <?php
 
+#clase que permite conectar la Base de Datos de manera alternativa
+#propositos especificos o complejos
 class DBase extends PDO
 {
     public function __construct(){

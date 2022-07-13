@@ -7,6 +7,7 @@ class Session
 		session_start();
 	}
 
+	#metodo que destruye una o varias variables de session
 	public static function destroy($key = false)
 	{
 		if($key):
@@ -26,6 +27,7 @@ class Session
 		endif;
 	}
 
+	#metodo que crea variables de session
 	public static function set($key, $value)
 	{
 		if(!empty($key)):
@@ -33,6 +35,7 @@ class Session
 		endif;
 	}
 
+	#metodo que lee una variable de session
 	public static function get($key)
 	{
 		if(isset($_SESSION[$key])):
@@ -40,6 +43,7 @@ class Session
 		endif;
 	}
 
+	#metodo que define un tiempo de session
 	public static function time()
 	{
 		if(!Session::get('time') || !defined('SESSION_TIME')):

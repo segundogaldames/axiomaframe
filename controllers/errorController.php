@@ -6,11 +6,6 @@ class errorController extends Controller
 		parent::__construct();
 	}
 
-	public function index()
-	{
-
-	}
-
 	public function error()
 	{
 		$this->_view->assign('titulo', 'Página No Encontrada');
@@ -23,30 +18,5 @@ class errorController extends Controller
 		$this->_view->assign('titulo', 'Inaccesible');
 		$this->_view->assign('mensaje', 'Acceso no permitido');
 		$this->_view->render('denied');
-	}
-
-	public function view($id = null)
-	{
-
-	}
-
-	public function edit($id = null)
-	{
-
-	}
-
-	public function update($id = null)
-	{
-
-	}
-
-	public function add()
-	{
-
-	}
-
-	public function new()
-	{
-
 	}
 }

@@ -15,29 +15,4 @@ class indexController extends Controller
 
 		$this->_view->render('index');
 	}
-
-	public function view($id = null)
-	{
-
-	}
-
-	public function edit($id = null)
-	{
-
-	}
-
-	public function update($id = null)
-	{
-
-	}
-
-	public function add()
-	{
-
-	}
-
-	public function new()
-	{
-
-	}
 }

@@ -9,31 +9,6 @@ class loginController extends Controller
         $this->tema = 'Ingreso de usuario';
     }
 
-    public function index()
-    {
-
-    }
-
-    public function view($id = null)
-    {
-
-    }
-
-    public function edit($id = null)
-    {
-
-    }
-
-    public function update($id = null)
-    {
-
-    }
-
-    public function add()
-    {
-
-    }
-
     #metodo GET que carga el formulario de login
     public function login()
     {
@@ -53,19 +28,16 @@ class loginController extends Controller
     #metodo POST que crea el login y la sesion
     public function new()
     {
-        $this->validateForm('login/login',[
-            'email' => $this->validateEmail($this->getPostParam('email')),
-            'password' => $this->getSql('password')
-            ]
-        );
+        $this->ParamForm('login/login',[
+            'email' => $this->validateEmail(Param::getPostParam('email')),
+            'password' => Param::getSql('password')
+        ]);
 
         $usuario = User::
-            where('email', $this->getPostParam('email'))
-            ->where('password', Helper::encryptPassword($this->getSql('password')))
+            where('email', Param::getPostParam('email'))
+            ->where('password', Helper::encryptPassword(Param::getSql('password')))
             ->where('status', 1)
             ->first();
-
-        //print_r(Helper::encryptPassword($this->getSql('password')));exit;
 
         if (!$usuario) {
             Session::set('msg_error', 'El email o el password no están registrados... intente nuevamente');

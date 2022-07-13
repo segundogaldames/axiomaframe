@@ -1,5 +1,5 @@
 <?php
-//llamada al archivo de generacion de plantillas Smarty
+#llamada al motor de plantillas Smarty
 require_once ROOT . 'libs' . DS . 'smarty' . DS . 'libs' . DS . 'Smarty.class.php';
 
 class View extends Smarty
@@ -16,13 +16,13 @@ class View extends Smarty
 
 	public function render($view, $item = false)
 	{
-		//configuracion de los directorios de la libreria Smarty
+		#configuracion de los directorios de la libreria Smarty
 		$this->template_dir = ROOT . 'views' . DS . 'layout' . DS . DEFAULT_LAYOUT . DS;
 		$this->config_dir = ROOT . 'views' . DS . 'layout' . DS . DEFAULT_LAYOUT . DS . 'configs' .DS;
 		$this->cache_dir = ROOT . 'tmp' . DS . 'cache' . DS;
 		$this->compile_dir = ROOT . 'tmp' . DS . 'template' . DS;
 
-		//configuracion de los menus de los templates o vistas
+		#configuracion de los menus predefinidos de los templates o vistas
 		$menu = array(
 			array(
 			),
@@ -31,33 +31,13 @@ class View extends Smarty
 				)
 			);
 
-		//activacion de vista inicio y cierre de sesiones
-		/*if(Session::get('autenticado')):
-			$menu[] = array(
-				'id' => 'login',
-				'titulo' => 'Cerrar Sesion',
-				'enlace' => BASE_URL . 'login/cerrar'
-				);
-		else:
-			$menu[] = array(
-				'id' => 'login',
-				'titulo' => 'Iniciar Sesion',
-				'enlace' => BASE_URL . 'login'
-				);
-			$menu[] = array(
-				'id' => 'registro',
-				'titulo' => 'Registrar',
-				'enlace' => BASE_URL . 'registro'
-				);
-		endif;*/
-
 		$js = array();
 
 		if(count($this->_js)):
 			$js = $this->_js;
 		endif;
 
-		//configuracion de rutas de css, js e img para las vistas
+		#configuracion de rutas de css, js e img para las vistas
 		$_params = array(
 			'route_css' => BASE_URL . 'views/layout/' . DEFAULT_LAYOUT . '/css/',
 			'route_js' => BASE_URL . 'views/layout/' . DEFAULT_LAYOUT . '/js/',
@@ -76,7 +56,6 @@ class View extends Smarty
 		if(is_readable($rutaWiev)):
 			$this->assign('_content', $rutaWiev);
 		else:
-			#throw new Exception("Error de vista");
 			header('Location: ' . BASE_URL . 'error/error/');
 		endif;
 

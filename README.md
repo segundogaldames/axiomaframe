@@ -21,10 +21,17 @@ Para trabajar con AxiomaFrame se necesita cumplir con los siguientes requisitos:
 
 Para la instalación de la mayoría de estas herramientas se pueden usar paquetes que incluyen PHP, MySQL o MariaDB y un servidor web como Apache, tales como Xampp, WampServer, etc. Composer y Git deben instalarse por separado. La instalación de las herramientas señaladas se realiza de acuerdo al sistema operativo que el desarrollador posea. Otra ventaja es que estas herramientas pueden ser instaladas en cualquiera de los sistemas operativos mas conocidos, tales como, Windows, Linux y Mac.
 
-##**Instalación**
+## **Instalación**
 ***AxiomaFrame*** no necesita de una compleja configuración. Basta que se acceda a este repositorio, se clone o descargue y, a trabajar. Si todas las herramientas del item anterior están correctamente instaladas, no habrá mas que programar.
 
 Por supuesto que, para facilitar el proceso de aprendizaje, desarrollaremos un set de videos tutoriales para mostrar como funciona, aportando valor práctico al proceso de aprendizaje. De esta forma, el desarrollador podrá utilizarlo en sus proyectos e incluirle todo lo que le haga falta para conseguir los objetivos deseados.
+
+- Descargar o clonar el repositorio de ***AxiomaFrame***.
+- Si lo descargas como .Zip debes descomprimirlo dentro de la carpeta de tu servidor web
+- Renombrar la carpeta recien clonada o descomprimida en el servidor con el nombre de tu proyecto
+- Crear una base de datos en mysql
+- Importar en esta base el archivo axiomaframe.sql... de esta manera podras usar la configuración inicial de registro e inicio de session en el sistema
+- Revisar la documentación para solucionar posibles inconvenientes
 
 ***Soporte y ayuda***
 Para facilitar el apoyo puedes comunicarte con sgaldamesh@gmail.com
