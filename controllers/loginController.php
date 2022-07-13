@@ -28,7 +28,7 @@ class loginController extends Controller
     #metodo POST que crea el login y la sesion
     public function new()
     {
-        $this->ParamForm('login/login',[
+        $this->validateForm('login/login',[
             'email' => $this->validateEmail(Param::getPostParam('email')),
             'password' => Param::getSql('password')
         ]);
