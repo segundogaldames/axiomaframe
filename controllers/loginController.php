@@ -29,13 +29,13 @@ class loginController extends Controller
     public function new()
     {
         $this->validateForm('login/login',[
-            'email' => $this->validateEmail(Param::getPostParam('email')),
-            'password' => Param::getSql('password')
+            'email' => $this->validateEmail(Filter::getPostParam('email')),
+            'password' => Filter::getSql('password')
         ]);
 
         $usuario = User::
-            where('email', Param::getPostParam('email'))
-            ->where('password', Helper::encryptPassword(Param::getSql('password')))
+            where('email', Filter::getPostParam('email'))
+            ->where('password', Helper::encryptPassword(Filter::getSql('password')))
             ->where('status', 1)
             ->first();
 

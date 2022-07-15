@@ -1,6 +1,6 @@
 <?php
 
-class Param
+class Filter
 {
 	#metodo que filtra un numero via GET
 	public static function filterInt($int)
