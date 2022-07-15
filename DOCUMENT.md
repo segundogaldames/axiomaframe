@@ -46,7 +46,7 @@ Si has instalado todo lo que se ha mencionado, podríamos probar.
 ***Los usuarios de Mac verán que el puerto por defecto de Mamp es 8888***
 
 ### ¿Todo bien hasta aquí? Continuemos...
-- Vé a al repositorio de ***AxiomaFrame*** y en el botón **Code** podrás acceder a dos formas básicas de descarga: hacer un clon del repositorio o descargarlo como Zip.
+- Vé a al repositorio de [AxiomaFrame](https://github.com/segundogaldames/axiomaframe/ "axiomaframe") y en el botón **Code** podrás acceder a dos formas básicas de descarga: hacer un clon del repositorio o descargarlo como Zip.
 - Si vas a clonar, entonces debes hacer lo siguiente:
 	- Abre la linea de comandos que te provee Git (se instala junto con Git en Windows)
 	- Dentro de la linea de comandos navega hasta la carpeta htdocs. En esta carpeta se alojan los proyectos web que corren en Apache.
