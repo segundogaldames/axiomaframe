@@ -101,7 +101,7 @@ class Controller
 	#usado para eliminar un registro en la base de datos
 	protected function validateDelete()
 	{
-		if ($this->getText('_method') != 'DELETE') {
+		if ($this->_param->getText('_method') != 'DELETE') {
 			$this->redirect('error/denied');
 		}
 	}
@@ -145,7 +145,7 @@ class Controller
 	#usado para modificar un registro en la base de datos
 	protected function validatePUT()
 	{
-		if ($this->getText('_method') != 'PUT') {
+		if (Param::getText('_method') != 'PUT') {
 			$this->redirect('error/denied');
 		}
 	}
@@ -155,14 +155,10 @@ class Controller
 	protected function validateRol($roles){
 
 		if (is_array($roles)) {
-			foreach ($$roles as $role) {
+			foreach ($roles as $role) {
 				if (Session::get('user_role') == $role) {
 					return true;
 				}
-			}
-		}else {
-			if (Session::get('user_role') == $role) {
-				return true;
 			}
 		}
 
@@ -184,6 +180,7 @@ class Controller
 		$num = substr($rut, 0, strlen($rut)-1);
 		$i = 2;
 		$sum = 0;
+
 		foreach(array_reverse(str_split($num)) as $v)
 		{
 			if($i==8)

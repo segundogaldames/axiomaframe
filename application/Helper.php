@@ -55,7 +55,7 @@ class Helper
 
     #metodo que construye una url amigable a partir del campo de un objeto
     public static function friendlyRoute($value)
-        {
+    {
         $route = strtolower(self::clearString($value));
         $route = str_replace(' ','-', $route);
 

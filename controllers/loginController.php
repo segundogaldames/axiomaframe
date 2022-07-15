@@ -50,7 +50,7 @@ class loginController extends Controller
         Session::set('tiempo', time());
         Session::set('msg_success','Bienvenid@ ' . $usuario->name);
 
-        $this->redirect();
+        $this->redirect('home');
     }
 
     public function logout()

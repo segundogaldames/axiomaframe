@@ -2,6 +2,18 @@
 
 class Param
 {
+	#metodo que filtra un numero via GET
+	public static function filterInt($int)
+	{
+		$int = (int) $int;
+
+		if(is_int($int)):
+			return $int;
+		else:
+			return 0;
+		endif;
+	}
+
 	#metodo que filtra una cadena alfanumerica via POST
     public static function getAlphaNum($data)
 	{
@@ -20,18 +32,6 @@ class Param
 		endif;
 
 		return 0;
-	}
-
-	#metodo que filtra un numero via GET
-    public static function filterInt($int)
-	{
-		$int = (int) $int;
-
-		if(is_int($int)):
-			return $int;
-		else:
-			return 0;
-		endif;
 	}
 
 	#metodo que filtra un numero via POST

@@ -25,10 +25,11 @@ class usersController extends Controller
     {
         $this->validateSession();
         $this->validateUsuario($id);
+        $this->getMessages();
 
         $this->_view->assign('title', 'Usuarios');
         $this->_view->assign('asunto','Detalle Usuario');
-        $this->_view->assign('usuario', User::find($this->filterInt($id)));
+        $this->_view->assign('usuario', User::find(Param::filterInt($id)));
         $this->_view->render('view');
     }
 
@@ -68,12 +69,11 @@ class usersController extends Controller
         $usuario->status = Param::getInt('status');
         $res = $usuario->save();
 
-        if ($res) {
-            Session::set('msg_success','El usuario se ha modificado correctamente');
-        }else {
+        if (!$res) {
             Session::set('msg_error','El usuario no se ha modificado... intente nuevamente');
         }
 
+        Session::set('msg_success','El usuario se ha modificado correctamente');
         $this->redirect('users/view/' . $id);
     }
 
@@ -130,14 +130,14 @@ class usersController extends Controller
         }
 
         Session::set('msg_success','El usuario se ha registrado correctamente');
-        $this->redirect();
+        $this->redirect('login/login');
     }
 
     #############################################
 
     private function validateUsuario($id)
     {
-        if ($this->filterInt($id)) {
+        if ($id) {
             $user = User::select('id')->find(Param::filterInt($id));
 
             if ($user) {
