@@ -63,11 +63,11 @@ class usersController extends Controller
             'status' => Filter::getText('status'),
         ]);
 
-        $usuario = User::find(Filter::filterInt($id));
-        $usuario->name = Filter::getSql('name');
-        $usuario->email = Filter::getPostParam('email');
-        $usuario->status = Filter::getInt('status');
-        $res = $usuario->save();
+        $user = User::find(Filter::filterInt($id));
+        $user->name = Filter::getSql('name');
+        $user->email = Filter::getPostParam('email');
+        $user->status = Filter::getInt('status');
+        $res = $user->save();
 
         if (!$res) {
             Session::set('msg_error','El usuario no se ha modificado... intente nuevamente');
@@ -109,21 +109,21 @@ class usersController extends Controller
             $this->redirect('users/add');
         }
 
-        $usuario = User::select('id')
+        $user = User::select('id')
             ->where('email', Filter::getPostParam('email'))
             ->first();
 
-        if ($usuario) {
+        if ($user) {
             Session::set('msg_error', 'El usuario ingresado ya existe... intente con otro');
             $this->redirect('users/add');
         }
 
-        $usuario = new User;
-        $usuario->name = Filter::getSql('name');
-        $usuario->email = Filter::getPostParam('email');
-        $usuario->status = 1;
-        $usuario->password = Helper::encryptPassword(Filter::getSql('password'));
-        $res = $usuario->save();
+        $user = new User;
+        $user->name = Filter::getSql('name');
+        $user->email = Filter::getPostParam('email');
+        $user->status = 1;
+        $user->password = Helper::encryptPassword(Filter::getSql('password'));
+        $res = $user->save();
 
         if (!$res) {
             Session::set('msg_error','El usuario no se ha registrado... intente nuevamente');

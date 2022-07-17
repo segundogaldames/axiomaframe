@@ -13,7 +13,7 @@
         <div class="form-group mb-2">
             <div class="utility">
 
-                <p class="semibold-text mb-2"><a href="{$_layoutParams.root}usuarios/resetPassword">¿Olvidaste tu
+                <p class="semibold-text mb-2"><a href="{$_layoutParams.root}passwords/resetPassword">¿Olvidaste tu
                         password?</a></p>
             </div>
         </div>

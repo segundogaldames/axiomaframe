@@ -33,22 +33,22 @@ class loginController extends Controller
             'password' => Filter::getSql('password')
         ]);
 
-        $usuario = User::
+        $user = User::
             where('email', Filter::getPostParam('email'))
             ->where('password', Helper::encryptPassword(Filter::getSql('password')))
             ->where('status', 1)
             ->first();
 
-        if (!$usuario) {
+        if (!$user) {
             Session::set('msg_error', 'El email o el password no están registrados... intente nuevamente');
             $this->redirect('login/login');
         }
 
         Session::set('autenticate', true);
-        Session::set('usuario_id', $usuario->id);
-        Session::set('usuario_name', $usuario->name);
+        Session::set('user_id', $user->id);
+        Session::set('user_name', $user->name);
         Session::set('tiempo', time());
-        Session::set('msg_success','Bienvenid@ ' . $usuario->name);
+        Session::set('msg_success','Bienvenid@ ' . $user->name);
 
         $this->redirect('home');
     }

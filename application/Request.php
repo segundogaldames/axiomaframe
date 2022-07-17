@@ -41,7 +41,7 @@ class Request
 				endif;
 			endif;
 
-			$this->_method = strtolower(@array_shift($url)); //extrae el segundo elemento y lo asigna a metodo
+			$this->_method = @strtolower(@array_shift($url)); //extrae el segundo elemento y lo asigna a metodo
 			$this->_arguments = $url; //lo que queda lo asigna a argumentos
 		}
 

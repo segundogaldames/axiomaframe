@@ -121,7 +121,7 @@ class Controller
 	protected function validateForm($route, $data)
 	{
 		//print_r($data);exit;
-		if ($this->decrypt(Param::getAlphaNum('send')) != $this->getForm()) {
+		if ($this->decrypt(Filter::getAlphaNum('send')) != $this->getForm()) {
 			$this->redirect('error/denied');
 		}
 
@@ -145,7 +145,7 @@ class Controller
 	#usado para modificar un registro en la base de datos
 	protected function validatePUT()
 	{
-		if (Param::getText('_method') != 'PUT') {
+		if (Filter::getText('_method') != 'PUT') {
 			$this->redirect('error/denied');
 		}
 	}

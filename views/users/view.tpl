@@ -32,5 +32,6 @@
     </table>
     <p>
         <a href="{{$_layoutParams.root}}users" class="btn btn-outline-primary btn-sm">Volver</a>
+        <a href="{{$_layoutParams.root}}passwords/edit" class="btn btn-outline-success btn-sm">Cambiar Password</a>
     </p>
 </div>
