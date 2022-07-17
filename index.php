@@ -1,14 +1,22 @@
 <?php
 
-//echo phpinfo();exit;
-ini_set('display_errors', 1);
-
 define('DS', DIRECTORY_SEPARATOR);
 define('ROOT', realpath(dirname(__FILE__)) . DS);
 define('APP_PATH', ROOT . 'application' .DS);
 define('VENDOR', ROOT . 'vendor/');
 
-// echo uniqid();
+$debug = true;
+
+if ($debug == true) {
+
+	ini_set('display_errors', 1);
+	error_reporting(E_ALL);
+
+}
+//echo phpinfo();exit;
+
+
+//echo uniqid();
 // exit;
 
 try{
