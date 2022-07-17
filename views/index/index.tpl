@@ -7,7 +7,7 @@
     <p>
     <p class="lead text-muted"><strong>AxiomaFrame</strong>... sencillamente simple.</p>
     <p>
-        <a href="#" class="btn btn-secondary my-2">Mas Información</a>
-        <a href="#" class="btn btn-secondary my-2">Documentación</a>
+        <a href="https://github.com/segundogaldames/axiomaframe/blob/main/README.md" class="btn btn-secondary my-2">Mas Información</a>
+        <a href="https://github.com/segundogaldames/axiomaframe/blob/main/DOCUMENT.md" class="btn btn-secondary my-2">Documentación</a>
     </p>
 </div>
