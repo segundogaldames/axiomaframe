@@ -1,5 +1,5 @@
-<form class="login-form" action="{$_layoutParams.root}{$route}" method="post">
-    <h3 class="login-head"><i class="fa fa-lg fa-fw fa-user"></i>{{$asunto}} </h3>
+<form class="login-form" action="{$_layoutParams.root}{$process}" method="post">
+    <h3 class="login-head"><i class="fa fa-lg fa-fw fa-user"></i>{$subject}</h3>
     <div class="form-group mb-2">
         <label class="control-label">Password</label>
         <input class="form-control" type="password" name="password" placeholder="Ingresa tu password">

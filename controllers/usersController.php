@@ -16,8 +16,8 @@ class usersController extends Controller
         $this->getMessages();
 
         $this->_view->assign('title', 'Usuarios');
-        $this->_view->assign('asunto','Lista de Usuarios');
-        $this->_view->assign('usuarios', User::all());
+        $this->_view->assign('subject','Lista de Usuarios');
+        $this->_view->assign('users', User::all());
         $this->_view->render('index');
     }
 
@@ -28,8 +28,8 @@ class usersController extends Controller
         $this->getMessages();
 
         $this->_view->assign('title', 'Usuarios');
-        $this->_view->assign('asunto','Detalle Usuario');
-        $this->_view->assign('usuario', User::find(Filter::filterInt($id)));
+        $this->_view->assign('subject','Detalle Usuario');
+        $this->_view->assign('user', User::find(Filter::filterInt($id)));
         $this->_view->render('view');
     }
 
@@ -41,10 +41,11 @@ class usersController extends Controller
         $this->getMessages();
 
         $this->_view->assign('title','Usuarios');
-        $this->_view->assign('asunto','Editar Usuario');
+        $this->_view->assign('subject','Editar Usuario');
         $this->_view->assign('button','Editar');
-        $this->_view->assign('action', 'users/update/' . $id);
-        $this->_view->assign('usuario', User::find(Filter::filterInt($id)));
+        $this->_view->assign('back', "users/edit/{$id}");
+        $this->_view->assign('process', "users/update/{$id}");
+        $this->_view->assign('user', User::find(Filter::filterInt($id)));
         $this->_view->assign('send', $this->encrypt($this->getForm()));
 
         $this->_view->render('edit');
@@ -57,8 +58,8 @@ class usersController extends Controller
 
         $this->validatePUT();
 
-        $this->validateForm('users/edit/'.$id,[
-            'name' => Filter::getText('name'),
+        $this->validateForm("users/edit/{$id}",[
+            'nombre' => Filter::getText('name'),
             'email' => $this->validateEmail(Filter::getPostParam('email')),
             'status' => Filter::getText('status'),
         ]);
@@ -69,10 +70,7 @@ class usersController extends Controller
         $user->status = Filter::getInt('status');
         $res = $user->save();
 
-        if (!$res) {
-            Session::set('msg_error','El usuario no se ha modificado... intente nuevamente');
-        }
-
+        Session::destroy('data');
         Session::set('msg_success','El usuario se ha modificado correctamente');
         $this->redirect('users/view/' . $id);
     }
@@ -82,10 +80,11 @@ class usersController extends Controller
         $this->getMessages();
 
         $this->_view->assign('title','Usuarios');
-        $this->_view->assign('asunto','Nuevo Usuario');
+        $this->_view->assign('subject','Nuevo Usuario');
         $this->_view->assign('button','Guardar');
-        $this->_view->assign('action','users/new');
-        $this->_view->assign('usuario', Session::get('data'));
+        $this->_view->assign('back', 'users/<aa');
+        $this->_view->assign('process','users/new');
+        $this->_view->assign('user', Session::get('data'));
         $this->_view->assign('send', $this->encrypt($this->getForm()));
 
         $this->_view->render('add');
@@ -125,10 +124,7 @@ class usersController extends Controller
         $user->password = Helper::encryptPassword(Filter::getSql('password'));
         $res = $user->save();
 
-        if (!$res) {
-            Session::set('msg_error','El usuario no se ha registrado... intente nuevamente');
-        }
-
+        Session::destroy('data');
         Session::set('msg_success','El usuario se ha registrado correctamente');
         $this->redirect('login/login');
     }

@@ -1,11 +1,11 @@
 <div class="col-lg-12 col-md-12 mx-auto">
     <h3>
-        {$asunto}
+        {$subject}
     </h3>
 
     {include file="../partials/_messages.tpl"}
 
-    {if isset($usuarios) && count($usuarios)}
+    {if isset($users) && count($users)}
         <table id="table" class="table table-hover">
             <thead>
                 <tr>
@@ -16,20 +16,20 @@
                 </tr>
             </thead>
             <tbody>
-                {foreach from=$usuarios item=usuario}
+                {foreach from=$users item=user}
                     <tr>
-                        <td>{$usuario.id}</td>
-                        <td>{$usuario.name}</td>
+                        <td>{$user.id}</td>
+                        <td>{$user.name}</td>
                         <td>
-                            {if $usuario.status == 1}
+                            {if $user.status == 1}
                                 <span class="badge text-bg-success">Activo</span>
                             {else}
                                 <span class="badge text-bg-danger">Inactivo</span>
                             {/if}
                         </td>
                         <td>
-                            <a href="{$_layoutParams.root}users/view/{$usuario.id}" class="btn btn-success btn-sm">Ver</a>
-                            <a href="{$_layoutParams.root}users/edit/{$usuario.id}" class="btn btn-warning btn-sm">Editar</a>
+                            <a href="{$_layoutParams.root}users/view/{$user.id}" class="btn btn-success btn-sm">Ver</a>
+                            <a href="{$_layoutParams.root}users/edit/{$user.id}" class="btn btn-warning btn-sm">Editar</a>
                         </td>
                     </tr>
                 {/foreach}

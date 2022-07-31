@@ -1,5 +1,5 @@
 <h3>
-    {$asunto}
+    {$subject}
 </h3>
 
 {include file="../partials/_messages.tpl"}

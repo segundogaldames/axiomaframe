@@ -1,6 +1,6 @@
 <div class="col-md-6 offset-md-3">
     {include file="../partials/_messages.tpl"}
-    <form class="login-form" action="{$_layoutParams.root}login/new" method="post">
+    <form class="login-form" action="{$_layoutParams.root}{$process}" method="post">
         <h3 class="login-head"><i class="fa fa-lg fa-fw fa-user"></i>Login</h3>
         <div class="form-group mb-2">
             <label class="control-label">Email</label>

@@ -19,7 +19,8 @@ class loginController extends Controller
         $this->getMessages();
         //print_r($_POST);exit;
         $this->_view->assign('title','Login de Usuario');
-        $this->_view->assign('asunto','Login de Usuario');
+        $this->_view->assign('subject','Login de Usuario');
+        $this->_view->assign('process', 'login/new');
         $this->_view->assign('send', $this->encrypt($this->getForm()));
 
         $this->_view->render('login');
@@ -47,7 +48,7 @@ class loginController extends Controller
         Session::set('autenticate', true);
         Session::set('user_id', $user->id);
         Session::set('user_name', $user->name);
-        Session::set('tiempo', time());
+        Session::set('time', time());
         Session::set('msg_success','Bienvenid@ ' . $user->name);
 
         $this->redirect('home');

@@ -14,8 +14,8 @@ class passwordsController extends Controller
         $this->getMessages();
 
         $this->_view->assign('title','Password');
-        $this->_view->assign('asunto','Cambiar Password');
-        $this->_view->assign('route','passwords/update');
+        $this->_view->assign('subject','Cambiar Password');
+        $this->_view->assign('process','passwords/update');
         $this->_view->assign('send', $this->encrypt($this->getForm()));
         $this->_view->render('edit');
     }
@@ -44,10 +44,7 @@ class passwordsController extends Controller
         $user->password = Helper::encryptPassword(Filter::getSql('password'));
         $res = $user->save();
 
-        if (!$res) {
-            Session::set('msg_error','el password no ha modificado... intente nuevamente');
-        }
-
+        Session::destroy('data');
         Session::set('msg_success','El password se ha modificado');
         $this->redirect('users/view/' . Session::get('usuario_id'));
     }
@@ -57,7 +54,8 @@ class passwordsController extends Controller
         $this->getMessages();
 
         $this->_view->assign('title','Resetear Password');
-        $this->_view->assign('asunto','Resetear Password');
+        $this->_view->assign('subject','Resetear Password');
+        $this->_view->assign('process','passwords/confirmUser/');
         $this->_view->assign('send', $this->encrypt($this->getForm()));
         $this->_view->render('resetPassword');
     }
@@ -84,8 +82,8 @@ class passwordsController extends Controller
         $this->getMessages();
 
         $this->_view->assign('title','Cambiar Password');
-        $this->_view->assign('asunto','Cambiar Password');
-        $this->_view->assign('route','passwords/updatePassword');
+        $this->_view->assign('subject','Cambiar Password');
+        $this->_view->assign('process','passwords/updatePassword');
         $this->_view->assign('send',$this->encrypt($this->getForm()));
         $this->_view->render('editPassword');
     }
@@ -115,10 +113,7 @@ class passwordsController extends Controller
         $user->password = Helper::encryptPassword(Filter::getSql('password'));
         $res = $user->save();
 
-        if (!$res) {
-            Session::set('msg_error','El password no se ha modificado... intente nuevamente');
-        }
-
+        Session::destroy('data');
         Session::set('msg_success','El password se ha restablecido... inicia sessión para continuar');
         $this->redirect('login/login');
     }
