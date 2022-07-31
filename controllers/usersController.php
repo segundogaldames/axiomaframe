@@ -24,7 +24,7 @@ class usersController extends Controller
     public function view($id = null)
     {
         $this->validateSession();
-        $this->validateUsuario($id);
+        Validate::validateModel(User::class,$id,'users');
         $this->getMessages();
 
         $this->_view->assign('title', 'Usuarios');
@@ -37,7 +37,7 @@ class usersController extends Controller
     {
         $this->validateSession();
 
-        $this->validateUsuario($id);
+        Validate::validateModel(User::class, $id, 'users');
         $this->getMessages();
 
         $this->_view->assign('title','Usuarios');
@@ -53,7 +53,7 @@ class usersController extends Controller
     public function update($id = null)
     {
         $this->validateSession();
-        $this->validateUsuario($id);
+        Validate::validateModel(User::class, $id, 'users');
 
         $this->validatePUT();
 
@@ -131,21 +131,5 @@ class usersController extends Controller
 
         Session::set('msg_success','El usuario se ha registrado correctamente');
         $this->redirect('login/login');
-    }
-
-    #############################################
-
-    private function validateUsuario($id)
-    {
-        if ($id) {
-            $user = User::select('id')->find(Filter::filterInt($id));
-
-            if ($user) {
-                return true;
-            }
-
-        }
-
-        $this->redirect('users');
     }
 }
