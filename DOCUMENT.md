@@ -61,4 +61,4 @@ En la parte superior de la página de bienvenida verás tres enlaces: Documentac
 
 Para poder iniciar sesión o registrar un usuario, debes importar el archivo axiomaframe.sql... este archivo es una copia de la base de datos minima para ***AxiomaFrame***. Debes crear una base de datos para iniciar y el nombre de tu base de datos puede tener cualquier nombre que mejor identifique la naturaleza de tu proyecto.
 
-Si usas un editor de código como Visual Studio Code, podrás usar el terminal que provee para el desarrollo e importar el archivo a traves de la linea de comandos. También puedes importar la base a través de PHPMyAdmin u otro administrador de MySQL.
+Si usas un editor de código como Visual Studio Code, podrás usar el terminal que provee para el desarrollo e importar el archivo a través de la linea de comandos. También puedes importar la base utilizando PHPMyAdmin u otro administrador de MySQL.
