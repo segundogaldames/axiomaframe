@@ -34,10 +34,6 @@ Por supuesto que, para facilitar el proceso de aprendizaje, desarrollaremos un s
 - Importar en esta base el archivo axiomaframe.sql... de esta manera podras usar la configuración inicial de registro e inicio de sessión en el sistema
 - Revisar la documentación para solucionar posibles inconvenientes.
 
-## **Problemas conocidos**
-
-Puede que al descargar o clonar el repositorio, no se pueda acceder a la libreria Smarty. Para solucionarlo, se puede dedscargar la libreria desde el sitio oficial de [Smarty](https://www.smarty.net/ "Smarty"). La carpeta descoprimida debe ubicarse en la carpeta libs de ***AxiomaFrame***
-
 ## **Soporte y ayuda**
 Para facilitar el apoyo puedes comunicarte con contacto@profesorgaldames.cl
 
