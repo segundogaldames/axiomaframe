@@ -170,6 +170,8 @@ class Controller
 		if (!Session::get('autenticate')) {
 			$this->redirect('login/login');
 		}
+
+		Session::resetId();
 	}
 
 	#metodo que comprueba la veracidad de un RUT

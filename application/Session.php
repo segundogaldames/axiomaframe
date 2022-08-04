@@ -43,6 +43,11 @@ class Session
 		endif;
 	}
 
+	public static function resetId()
+	{
+		session_regenerate_id();
+	}
+
 	#metodo que define un tiempo de session
 	public static function time()
 	{
