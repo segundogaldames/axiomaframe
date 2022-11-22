@@ -1,3 +1,13 @@
+"name": "segundogaldames/axiomaframe",
+    "description": "Micro framework para crear app",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Segundo Galdames",
+            "email": "segundogaldames@gmail.com"
+        }
+    ],
 {
     "require": {
         "illuminate/database": "^8.73"
