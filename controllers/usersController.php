@@ -21,7 +21,7 @@ class usersController extends Controller
         $this->_view->render('index');
     }
 
-    public function view($id = null)
+    public function show($id = null)
     {
         $this->validateSession();
         Validate::validateModel(User::class,$id,'users');
@@ -30,7 +30,7 @@ class usersController extends Controller
         $this->_view->assign('title', 'Usuarios');
         $this->_view->assign('subject','Detalle Usuario');
         $this->_view->assign('user', User::find(Filter::filterInt($id)));
-        $this->_view->render('view');
+        $this->_view->render('show');
     }
 
     public function edit($id = null)
@@ -75,7 +75,7 @@ class usersController extends Controller
         $this->redirect('users/view/' . $id);
     }
 
-    public function add()
+    public function create()
     {
         $this->getMessages();
 
@@ -83,14 +83,14 @@ class usersController extends Controller
         $this->_view->assign('subject','Nuevo Usuario');
         $this->_view->assign('button','Guardar');
         $this->_view->assign('back', 'users/<aa');
-        $this->_view->assign('process','users/new');
+        $this->_view->assign('process','users/store');
         $this->_view->assign('user', Session::get('data'));
         $this->_view->assign('send', $this->encrypt($this->getForm()));
 
-        $this->_view->render('add');
+        $this->_view->render('create');
     }
 
-    public function new()
+    public function store()
     {
         $this->validateForm('users/add',[
             'nombre' => Filter::getText('name'),
@@ -100,12 +100,12 @@ class usersController extends Controller
 
         if (strlen(Filter::getSql('password')) < 8) {
             Session::set('msg_error', 'El password debe contener al menos 8 caracteres');
-            $this->redirect('users/add');
+            $this->redirect('users/create');
         }
 
         if (Filter::getSql('password') != Filter::getSql('password_confirm')) {
             Session::set('msg_error', 'Los passwords no coinciden');
-            $this->redirect('users/add');
+            $this->redirect('users/create');
         }
 
         $user = User::select('id')
@@ -114,7 +114,7 @@ class usersController extends Controller
 
         if ($user) {
             Session::set('msg_error', 'El usuario ingresado ya existe... intente con otro');
-            $this->redirect('users/add');
+            $this->redirect('users/create');
         }
 
         $user = new User;
