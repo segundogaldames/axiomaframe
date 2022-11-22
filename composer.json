@@ -16,5 +16,6 @@
         "psr-4": {
             "models\\": "models/"
         }
-    }
+    },
+    "minimum-stability": "stable"
 }
