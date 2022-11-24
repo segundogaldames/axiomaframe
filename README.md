@@ -38,7 +38,7 @@ Considera los siguientes pasos:
 - Si lo descargas como .Zip debes descomprimirlo dentro de la carpeta de tu servidor web.
 - Renombrar la carpeta recién clonada o descomprimida en el servidor con el nombre de tu proyecto.
 - Crear una base de datos en mysql.
-- Registrar los permisos a ella en el archivo de configuración principal
+- Configurar permisos y parámetros de acceso en el archivo de configuración principal
 - Revisar la documentación para solucionar posibles inconvenientes.
 
 ## **Soporte y ayuda**
