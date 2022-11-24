@@ -9,20 +9,6 @@
             </svg> *}
             <span class="fs-4">&nbsp; AxiomaFrame</span>
         </a>
-
-        <nav class="d-inline-flex mt-2 mt-md-0 ms-md-auto">
-            {if isset(Session::get('autenticate'))}
-                <a class="me-3 py-2 text-dark text-decoration-none"
-                    href="{$_layoutParams.root}home">Home</a>
-            {/if}
-            <a class="me-3 py-2 text-dark text-decoration-none" href="https://github.com/segundogaldames/axiomaframe/blob/main/DOCUMENT.md" target="_blank">Documentación</a>
-            {if isset(Session::get('autenticate'))}
-                <a class="me-3 py-2 text-dark text-decoration-none" href="{$_layoutParams.root}login/logout">Logout</a>
-            {else}
-                <a class="me-3 py-2 text-dark text-decoration-none" href="{$_layoutParams.root}login/login">Login</a>
-            {/if}
-            <a class="me-3 py-2 text-dark text-decoration-none" href="{$_layoutParams.root}users/add">Registrar</a>
-        </nav>
     </div>
 
 </div>
