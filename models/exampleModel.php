@@ -11,7 +11,7 @@ class exampleModel extends Model
     {
         $data = $this->_db->query("SELECT fields_list FROM tables");
 
-        return $art->fetchall();
+        return $data->fetchall();
     }
 
     // get a register from a table by id
@@ -28,7 +28,7 @@ class exampleModel extends Model
     // used to check for duplicate data
     public function getRegisterName($param)
     {
-        $data = $this->_db->prepare("SELECT id FROM dataiculos WHERE titulo = ?");
+        $data = $this->_db->prepare("SELECT id FROM tables WHERE titulo = ?");
         $data->bindParam(1, $param);
         $data->execute();
 

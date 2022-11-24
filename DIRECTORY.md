@@ -1,6 +1,6 @@
 Bienvenidos y bienvenidas. En este documento les explicaremos cual es la estructura del directorio de ***AxiomaFrame***. El objetivo principal es que conozcas cómo se implementa un proyecto con el partón arquitectónico MVC en ***AxiomaFrame***.
 
-# Capa core o nucleo del sistema
+# Capa core o núcleo del sistema
 
 En los frameworks se implementa habitualmente una capa en la que se agrupan carpetas, subcarpetas, archivos e infraestura que permiten dar sustento a todo el funcionamiento requerido para programar. Normalmente, para que un framework pueda responder de manera adecuada a las peticiones de recursos y de datos en un proyecto, requiere de archivos de configuración, de seguridad, de validaciones y un sin fin de opciones. La complejidad y el número de componentes del núcleo de un framework dependerá de muchos factores, tales como, la envergadura de los proyectos o, simplemente, cuestiones de tiempo o de madurez de las propuestas de desarrollo.
 
@@ -23,3 +23,50 @@ Revisemos las características mas importantes de estos componentes:
 - **Session**: en este archivo, se implementa una clase encargada de la gestión de sesiones de los usuarios, luego que hayan ingresados credenciales en un login. Sus métodos se encargan de crear las variables de sesión necesarias para permitir la navegación autorizada dentro de la aplicación. También permite el envío de mensajes entre vistas o componentes del sistema, utilizando variables de sesión.
 - **Validate**: esta clase implementa, por ahora, un método que permite validar un recurso existente en la base de datos de la aplicación. El objetivo es evitar que alguien ingrese a recursos no permitidos o que no existan en el sistema.
 - **View**: aqui, la clase View implementa dos cosas relevantes: una llamada a Smarty para que se transforme en el motor de plantillas web para la aplicación y, métodos y procedimientos para construir rutas, tomando en cuenta los parámetros definidos por las clases Bootstrap y Request. En colaboración con Smarty, View nos permite enviar datos desde un controlador a las vistas de un dominio determinado y procesar las rutas que se generen en la aplicación de una manera mas dinámica; es decir, no tendremos que definir las rutas de manera explícita como se hace en otros frameworks.
+
+# Controladores
+La carpeta que almacena los controladores necesarios para la aplicación es *controllers*. Como parte de la infraestructura inicial de ***AxiomaFrame***, se implementan dos controladores: uno para gestionar los errores de acceso y otro para gestionar la vista principal del proyecto. Aunque se puede cambiar este comportamiento en un determinado proyecto, por defecto, ***AxiomaFrame*** implementa un controlador inicial para gestionar las primeras peticiones: indexController.
+
+La lógica MVC nos indica que los controladores gestionarán las peticiones realizadas por un cliente en la aplicación, siendo intermediario entre las vistas de usuario y los modelos, los que a su vez, se encargan de gestionar los datos desde y hacia la base de datos. Cada método, en un controlador, realizará tareas únicas y específicas para cumplir con las buenas prácticas de programación.
+
+# Librerías de terceros
+La carpeta *libs* se encarga, en principio, de agrupar librerías de terceras partes, cuyo propósito es agregar alguna funcionalidad que, por defecto, no pudiera estar cubierta por el kit mínimo de instalación de ***AxiomaFrame***. Aunque se puede utilizar Composer para instalar de manera dinámica las librerías que necesitemos, existe un bajo, pero significativo número de librerías o plugins que no usan Composer y, si las requerimos, las podremos descargar en libs y usarlas en los controladores que lo necesiten. Un ejemplo de esto, es la utilización de Smarty, la que no se puede gestionar (al menos por ahora) a través de Composer, pero que podremos utilizarla a través de libs.
+
+# Modelos
+En la carpeta *models* podremos guardar los modelos de la aplicación, cuyo propósito esencial es gestionar la disponibilidad de los datos de la aplicación en la base de datos, tanto en procesos de entrada como en procesos de salida.
+
+Por defecto, ***AxiomaFrame*** implementa dos modelos de ejemplo que, en principio, no tienen otro propósito que mostrar cómo se usan. Uno de ellos es Example, el cual es un prototipo del uso de Eloquent en un modelo. El otro model es exampleModel, cuyo propósito es definir la forma en la que operará si es que decidimos no usar Eloquent como ORM de la aplicación. De esta manera, tendremos dos alternativas para trabajar con los datos de nuestro proyecto.
+
+# Public
+La carpeta public se encarga de agrupar los archivos de contenido estático de la aplicación; esto es, archivos de estilos (CSS, por sus siglas en inglés), archivos JavaScript de interacción con el usuario, imágenes y otros archivos que se requieran. Estos archivos tendrán la misión de hacer mas amigable la interacción entre usuarios y la aplicación.
+
+Por defecto, ***AxiomaFRame*** implementa bootstrap como gestor de estilos, pero se puede trabajar con estilos propios si así lo desea el desarrollador.
+
+# Archivos temporales
+En el caso de ***AxiomaFrame***, se implementan archivos temporales que actúan como caché de las vistas que se crean en la aplicación a través de Smarty. La clase Smarty, provee un mecanismo de generación de archivos temporales para ayudar al sistema a recuperar vistas ya usadas por el usuario, generando mayor velocidad de respuesta. Esta carpeta no se comparte en el repositorio git por defecto, ya que está bloqueda por seguridad.
+
+**Nota:** Si al clonar el repositorio de ***AxiomaFrame*** no se descarga la carpeta tmp y su subcarpeta template, entonces, se deben crear manualmente en el directorio raiz del proyecto. Puede ocurrir que, en determinadas circunstancias, el propio Smarty cree estas carpetas al ejecutar el framework por primera vez; de lo contrario, hay que crear estas carpetas tal como se señaló anteriormente.
+
+# Vendor
+El directorio *vendor* contiene todas las librerías y plugins instalados en la aplicación a través de Composer. Cuando se implementó Eloquent en ***AxiomaFrame***, Composer creó esta carpeta, por lo que podemos usar Eloquent de manera nativa, ya que, al menos por ahora, el directorio vendor no está bloquedo en el repositorio del framework.
+
+Cada vez que usemos Composer para instalar alguna librería del paquete público del packageList, éstas serán ubicadas en vendor de manera automática.
+
+# Vistas de usuario
+Las vistas de usuario son administradas por cada controlador, según el dominio o funcionalidad. Por ejemplo, un controlador creado para administrar clientes, podrá administrar las vistas necesarias para crear, modificar, ver y/o eliminar datos de un cliente. Estas vistas se agruparán en una carpeta, cuyo nombre reconocerá al controlador que las administra y, de esta manera, el sistema podrá disponibilizar datos a través de ellas.
+
+Por defecto, ***AxiomaFrame*** tiene implementadas las siguientes vistas:
+- **error**: una por cada método del controlador error: una para mostrar una página 404 (sitio no disponible) y otra para una página 403 (vista no permitida por falta de permisos).
+- **index**: una vista para el método index del controlador. Muestra, para este caso, el contenido de la página principal del framework cuando ejecutamos el directorio raiz.
+- **layout**: contiene los layout que se requieran en la aplicación. Un layout permite a una aplicación web generar un marco de estilos y navegabilidad conocida y estandarizada para todo el sistema, evitando la creación de código repetido que pudiera dificultar el mantenimiento del proyecto. Por defecto, ***AxiomaFrame*** implementa un layout llamado default (en carpeta del mismo nombre). Dentro de default veremos archivos y carpetas que ayudan al template general de la apliación a cargar toda la mecánica de estilos que la aplicación requiera. Se puede modificar el comportamiento del layout por defecto o crear un nuevo directorio en layout que cargue los elementos deseados.
+- **partials**: este directorio contiene todas las vistas que representen a una parte de otras vistas. El propósito es definir pequeños componentes reutilizables que pueden ser incluidos en otras vistas de la aplicación. Esta técnica es muy utilizada para evitar la repetición innecesaria de código y que pueda garantizar un mejor proceso de mantenimiento.
+
+# En la raiz del sistema
+En la raiz del sistema tenemos un conjunto de archivos que puede variar, dependiendo de la envergadura del sistema. De esta manera tenemos:
+- **.gitignore**: es utilizado para determinar los directorios y archivos que se ignorarán al momento de hacer un commit de la aplicación en un repositorio en la nube. Por ejemplo, la actualización de código fuente de un proyecto subida a github. En este caso, se subirá todo el código, menos el que esté ignorado en .gitignore. De esta manera, podemos evitar que se suba código, cuya importancia afecta la seguridad del sistema.
+- **.htaccess**: es un tipo de archivo que permite la redirección y carga de rutas url de manera segura. Tiene influencia en el comportamiento de las rutas en el servidor de aplicaciones (por ejemplo, Apache).
+- **composer.json**: este es un archivo que provee declaración de configuraciones, versiones y dependencias necesarias para un proyecto gestionado por Composer.
+- **composer.lock**: este archivo trabaja como respaldo de composer.json y sirve para comprobar las versiones disponibles de paquetes que haya instalado Composer.
+- **index.php**: este archivo actúa como puerta de entrada a las prestaciones del framework. Es decir, cualquier petición realizada por un usuario será ingresada a traves de index. Este index, hará las primeras llamadas a los archivos necesarios para procesar la petición realizada.
+- **archivos auxiliares de información**: en un repositorio en git, hay documentos que utilizan el estandar denominado *markdown* para publicar información de un proyecto que ayude a los usuarios a entender mecanismos y funcionamientos del sistema. En la actualidad, poseemos un archivo para mostrar la información general del sistema, otro para mostrar la documentación esencial básica para operar el framework y otro para mostrar la estructura básica con la que opera ***AxiomaFrame***. En el futuro, utilizaremos otros archivos del tipo markdown para compartir información relevante del sistema.
+

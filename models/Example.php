@@ -1,5 +1,5 @@
 <?php
-# este es un ejemplo de modelo que utiliza Eloquent
+// example of using model with eloquent
 namespace models;
 
 use Illuminate\Database\Eloquent\Model;
