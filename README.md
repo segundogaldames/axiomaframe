@@ -1,7 +1,7 @@
 # Bienvenidos a AxiomaFrame
 
 ## **Resumen**
-***AxiomaFrame*** es un pequeño aporte al desarrollo de aplicaciones web. Se trata de un micro framework basado en PHP, implementado bajo el patrón de arquitectura MVC y que tiene como objetivo general, ayudar a los desarrolladores que no tienen tanta experiencia en la programación, a construir aplicaciones en un entorno configurado para conectar bases de datos y un set de herramientas básicas que le permitirán cumplir los objetivos de un proyectos web.
+***AxiomaFrame*** es un pequeño aporte al desarrollo de aplicaciones web. Se trata de un micro framework basado en PHP, implementado bajo el patrón de arquitectura MVC y que tiene como objetivo general, ayudar a los desarrolladores que no tienen tanta experiencia en la programación, a construir aplicaciones en un entorno configurado para conectar bases de datos y un set de herramientas básicas que te permitirán cumplir los objetivos de un proyectos web.
 
 ## **Características Generales**
 Entre las herramientas que posee ***AxiomaFrame***, enumeramos las siguientes:
@@ -12,14 +12,20 @@ Entre las herramientas que posee ***AxiomaFrame***, enumeramos las siguientes:
 
 Vía Composer se pueden instalar mas herramientas necesarias para el proyecto y, por supuesto, se pueden usar paquetes para configurar y utilizar librerías y entornos como NodeJs, Bootstrap, tailswinds, etc.
 
-## **Requisitos**
-Para trabajar con AxiomaFrame se necesita cumplir con los siguientes requisitos:
+## **Requisitos de Software**
+Para trabajar con AxiomaFrame necesitas tener instaladas las siguientes herramientas:
 - PHP 8 o superior.
 - MySQL 8 o superior.
 - Composer (opcional)
 - Git
 
 Para la instalación de la mayoría de estas herramientas se pueden usar paquetes tales como Xampp o WampServer (que incluyen PHP, MySQL o MariaDB, y un servidor web como Apache). Composer y Git deben instalarse por separado. La instalación de las herramientas señaladas se realiza de acuerdo al sistema operativo que el desarrollador posea. Otra ventaja es que estas herramientas pueden ser instaladas en cualquiera de los sistemas operativos mas conocidos, tales como, Windows, Linux y Mac.
+
+## **Conocimientos Requeridos**
+- Conocimientos básicos de Programación Orientada a Objetos.
+- Conocimientos básicos de PHP
+- Manejo de bases de datos a nivel básico
+
 
 ## **Instalación**
 ***AxiomaFrame*** no necesita de una compleja configuración. Basta con acceder a este repositorio, lo clones o descargues y, a trabajar. Si todas las herramientas del item anterior están correctamente instaladas, el proceso de programación de tu proyecto puede comenzar sin problemas.
