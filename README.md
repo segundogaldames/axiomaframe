@@ -19,7 +19,7 @@ Para trabajar con AxiomaFrame necesitas tener instaladas las siguientes herramie
 - Composer (opcional)
 - Git
 
-Para la instalación de la mayoría de estas herramientas se pueden usar paquetes tales como Xampp o WampServer (que incluyen PHP, MySQL o MariaDB, y un servidor web como Apache). Composer y Git deben instalarse por separado. La instalación de las herramientas señaladas se realiza de acuerdo al sistema operativo que el desarrollador posea. Otra ventaja es que estas herramientas pueden ser instaladas en cualquiera de los sistemas operativos mas conocidos, tales como, Windows, Linux y Mac.
+Para la instalación de la mayoría de estas herramientas se pueden usar paquetes tales como Xampp o WampServer (que incluyen PHP, MySQL o MariaDB, y un servidor web como Apache). Composer y Git deben instalarse por separado. La instalación de las herramientas señaladas se realiza de acuerdo al sistema operativo que uses. Otra ventaja es que estas herramientas pueden ser instaladas en cualquiera de los sistemas operativos mas conocidos, tales como, Windows, Linux y Mac.
 
 ## **Conocimientos Requeridos**
 - Conocimientos básicos de Programación Orientada a Objetos.
@@ -28,7 +28,7 @@ Para la instalación de la mayoría de estas herramientas se pueden usar paquete
 
 
 ## **Instalación**
-***AxiomaFrame*** no necesita de una compleja configuración. Basta con acceder a este repositorio, lo clones o descargues y, a trabajar. Si todas las herramientas del item anterior están correctamente instaladas, el proceso de programación de tu proyecto puede comenzar sin problemas.
+***AxiomaFrame*** no necesita de una compleja configuración. Basta con acceder a este repositorio, clonar o descargar y, a trabajar. Si todas las herramientas del item anterior están correctamente instaladas, el proceso de programación de tu proyecto puede comenzar sin problemas.
 
 La documentación de ***AxiomaFrame*** permite facilitar el proceso de aprendizaje, aportando valor práctico al proceso de aprendizaje. De esta forma, puedes utilizar esta herramienta en tus proyectos e incluirle todo lo que te haga falta para conseguir los objetivos deseados.
 
