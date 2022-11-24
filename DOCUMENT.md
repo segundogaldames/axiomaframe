@@ -24,7 +24,7 @@ Como nada es perfecto, las sugerencias y aportes a ***AxiomaFrame*** serán bien
 ## Iniciando...
 ### Preparando el entorno de inicio
 Para comenzar, debes instalar en tu computadora las siguientes aplicaciones:
-- Alternativa a): **Xampp**. Ve al sitio oficial de [Xampp](https://www.apachefriends.org/es/index.html "Xampp") y descarga la versión que corresponda con tu sistema operativo. Normalmente, en Windows podrá instalar esta aplicación tal como se hace habitualmente con otras aplicaciones.
+- Alternativa a): **Xampp**. Ve al sitio oficial de [Xampp](https://www.apachefriends.org/es/index.html "Xampp") y descarga la versión que corresponda con tu sistema operativo. Normalmente, en Windows podrás instalar esta aplicación tal como se hace habitualmente con otras aplicaciones.
 - Alternativa b): **Wampserver**. Ve al sitio oficial de [WampServer](https://www.wampserver.com/en/ "Wampserver") y descarga el software. A diferencia de Xampp, WampServer solo funciona en Windows.
 
 Si eres usuario de Mac, te recomendamos el uso de Mamp en su versión gratuita. Puedes descargarlo desde su sitio [oficial](https://www.mamp.info/en/windows/ "oficial").
@@ -37,13 +37,13 @@ Otra herramienta que debes instalar antes de iniciar con ***AxiomaFrame*** es Gi
 
 Luego de creada la cuenta, podrás crear repositorios públicos o privados en donde puedas alojar tu código, junto con las actualizaciones que realices en él.
 
-Continuando con el set de herramientas iniciales, opcionalmente, puedes instalar [Composer](https://getcomposer.org/ "Composer"). Esta herramienta permite la instalación de paquetes y librerías de desarrollo complementarias al proyecto. Por ejemplo, la librería Eloquent que implementa ***AxiomaFrame*** se instaló con Composer y si tu necesitaras en el futuro de otras librerías podrás instalarlas a través de Composer. Si quieres conocer las alternativas en cuanto a aplicaciones disponibles usando Composer, visita [La lista de paquetes](https://packagist.org/ "La lista de paquetes") publicados.
+Continuando con el set de herramientas iniciales, opcionalmente, puedes instalar [Composer](https://getcomposer.org/ "Composer"). Esta herramienta permite la instalación de paquetes y librerías de desarrollo complementarias al proyecto. Por ejemplo, la librería Eloquent, que implementa ***AxiomaFrame***, se instaló con Composer y, si tu necesitaras en el futuro de otras librerías, podrás instalarlas a través de Composer. Si quieres conocer las alternativas en cuanto a aplicaciones disponibles usando Composer, visita [La lista de paquetes](https://packagist.org/ "La lista de paquetes") publicados.
 
 Si has instalado todas las herramientas señaladas, podríamos probar.
 - Ve al panel de Xampp e inicia Apache y MySQL. WampServer y Mamp tienen sus propias formas, pero la operación es la misma.
 - Abre el navegador de tu preferencia.
 - Escribe en la barra de direcciones la palabra localhost.
-- Si todo anda bien, verás una pantalla en la que se muestra la pantalla de inicio de Xampp, WampServer o Mamp, con información acerca de la versión de PHP, MySQL y PHPMyAdmin (un software que te ayudará a administrar tus bases de datos). Si no se muestra dicha página o en el navegador aparece un mensaje con información de problemas de inicio, entonces tendrás que cambiar el puerto para Apache, ya que muchas veces hay aplicaciones que pueden estar corriendo en ese puerto. La recomendación es cambiar el puerto 80 por el 8080. En ese caso, la dirección web de tu servidor local será localhost:8080.
+- Si todo anda bien, verás una pantalla en la que se muestra la vista de inicio de Xampp, WampServer o Mamp, con información acerca de la versión de PHP, MySQL y PHPMyAdmin (un software que te ayudará a administrar tus bases de datos). Si no se muestra dicha página o en el navegador aparece un mensaje con información de problemas de inicio, entonces tendrás que cambiar el puerto para Apache, ya que muchas veces hay aplicaciones que pueden estar corriendo en ese puerto. La recomendación es cambiar el puerto 80 por el 8080. En ese caso, la dirección web de tu servidor local será localhost:8080.
 
 ***Los usuarios de Mac verán que el puerto por defecto de Mamp es 8888***
 
@@ -53,10 +53,12 @@ Si has instalado todas las herramientas señaladas, podríamos probar.
 	- Abre la linea de comandos que te provee Git (se instala junto con Git en Windows)
 	- Dentro de la linea de comandos navega hasta la carpeta htdocs. En esta carpeta se alojan los proyectos web que corren en Apache (el nombre de la carpeta htdocs es el que usa Xampp para alojar proyectos. En el caso de WampServer es www).
 	- Dentro de la carpeta htdocs escribe el comando:
-***git clone git@github.com:segundogaldames/axiomaframe.git***.
+***git clone https://github.com/segundogaldames/axiomaframe.git***.
 
-	- Se comenzará a descargar todo el repositorio. Al finalizar tendrás una carpeta llamada axiomaframe, dentro de la carpeta htdocs.
+	- Se comenzará a descargar todo el repositorio. Al finalizar, tendrás una carpeta llamada axiomaframe, dentro de la carpeta htdocs.
 	- Renombra la carpeta axiomaframe con otro nombre. El que mejor describa el proyecto que deseas iniciar.
 	- Prueba la aplicación ingresando la expresion localhost/nombre_proyecto, en donde <nombre de proyecto> es el nombre con el cual renombraste la carpeta axiomaframe. Recuerda que los nombres de las carpetas para las aplicaciones web no deben tener espacios entre palabras. Si todo anda bien, verás la pantalla de inicio de ***AxiomaFrame*** con las opciones y textos de inicio.
 
 En la parte final del texto de bienvenida de la página principal verás dos enlaces: Más Información y Documentación. Estos son enlaces directos para ayudarte a encontrar la información que requieras de ***AxiomaFrame***.
+
+A continuación te invitamos a conocer la estructura del directorio de ***AxiomaFrame***
