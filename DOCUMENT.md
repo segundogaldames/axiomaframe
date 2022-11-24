@@ -61,4 +61,4 @@ Si has instalado todas las herramientas señaladas, podríamos probar.
 
 En la parte final del texto de bienvenida de la página principal verás dos enlaces: Más Información y Documentación. Estos son enlaces directos para ayudarte a encontrar la información que requieras de ***AxiomaFrame***.
 
-A continuación te invitamos a conocer la estructura del directorio de ***AxiomaFrame***
+A continuación te invitamos a conocer la estructura del directorio de ***AxiomaFrame***, [pinchando aquí ](https://github.com/segundogaldames/axiomaframe/blob/main/DIRECTORY.md "pinchando aquí ")
