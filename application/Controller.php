@@ -101,7 +101,7 @@ class Controller
 	#usado para eliminar un registro en la base de datos
 	protected function validateDelete()
 	{
-		if ($this->_param->getText('_method') != 'DELETE') {
+		if (Filter::getText('_method') != 'DELETE') {
 			$this->redirect('error/denied');
 		}
 	}
@@ -129,7 +129,7 @@ class Controller
 
 		if (is_array($data)) {
 			foreach ($data as $data=>$value) {
-				if ($value == '') {
+				if ($value == '' || $value == 0) {
 					$error = "El campo <strong>$data</strong> es obligatorio";
 				}
 
