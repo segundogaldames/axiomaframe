@@ -2,7 +2,7 @@ Bienvenidos y bienvenidas. En este documento les explicaremos cual es la estruct
 
 # Capa core o núcleo del sistema
 
-En los frameworks se implementa habitualmente una capa en la que se agrupan carpetas, subcarpetas, archivos e infraestura que permiten dar sustento a todo el funcionamiento requerido para programar. Normalmente, para que un framework pueda responder de manera adecuada a las peticiones de recursos y de datos en un proyecto, requiere de archivos de configuración, de seguridad, de validaciones y un sin fin de opciones. La complejidad y el número de componentes del núcleo de un framework dependerá de muchos factores, tales como, la envergadura de los proyectos o, simplemente, cuestiones de tiempo o de madurez de las propuestas de desarrollo.
+En los frameworks se implementa habitualmente una capa en la que se agrupan carpetas, subcarpetas, archivos e infraestructura que permiten dar sustento a todo el funcionamiento requerido para programar. Normalmente, para que un framework pueda responder de manera adecuada a las peticiones de recursos y de datos en un proyecto, requiere de archivos de configuración, de seguridad, de validaciones y un sin fin de opciones. La complejidad y el número de componentes del núcleo de un framework dependerá de muchos factores, tales como, la envergadura de los proyectos o, simplemente, cuestiones de tiempo o de madurez de las propuestas de desarrollo.
 
 Como sabrás, las aplicaciones web requieren de mínimos comunas de seguridad, validaciones y estándares que propendan al desarrollo útil y seguro de un proyecto, ya que nadie quiere que, por errores de programación, se estropee el sistema y quede abierto a ataques que comprometan el buen funcionamiento de una aplicación.
 
