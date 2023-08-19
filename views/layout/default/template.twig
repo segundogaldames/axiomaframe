@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+   <head>
+   	<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta name="description" content="frame de aplicaciones web">
+
+    <title>
+      {% block title %}{% endblock %}
+    </title>
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+ 
+    {% include 'layout/default/link_css.twig' %}
+
+
+   </head>
+   <body>
+  {% include 'layout/default/menu.twig' %}
+
+      <div class="container">
+
+
+            {% block content %}{% endblock %}
+          </div>
+
+    {% include 'layout/default/link_js.twig' %}
+
+    <noscript>
+      <p>Debe tener el soporte de Javascript habilitado</p>
+    </noscript>
+
+  </body>
+</html>

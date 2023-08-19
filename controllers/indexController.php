@@ -13,6 +13,6 @@ class indexController extends Controller
 	{
 		$this->getMessages();
 
-		$this->_view->render('index');
+		$this->_view->load('index/index');
 	}
 }

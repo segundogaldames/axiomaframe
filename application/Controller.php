@@ -55,13 +55,11 @@ class Controller
 	protected  function getMessages(){
 		if (Session::get('msg_success')) {
 			$msg_success = Session::get('msg_success');
-			$this->_view->assign('_mensaje', $msg_success);
 			Session::destroy('msg_success');
 		}
 
 		if (Session::get('msg_error')) {
 			$msg_error = Session::get('msg_error');
-			$this->_view->assign('_error', $msg_error);
 			Session::destroy('msg_error');
 		}
 	}
