@@ -50,7 +50,7 @@ Si al momento de guardar datos en la base de datos utilizando Eloquent, da error
 - Caso 2: La versión de Eloquent es menor a la versión actual de tu PHP (mayor a 8.2)
 
 Para solucionarlo debes realizar los siguientes pasos:
-- Instalar en composer en tu computadora
+- Instalar Composer en tu computadora
 - Acceder al directorio de tu servidor, donde está tu proyecto y correr el comando "composer update"
 
 Con estas operaciones debiera restablecerse la normalidad. Si tienes algún otro problema envíame un email a segundogaldames@gmail.com
