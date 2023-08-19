@@ -6,7 +6,7 @@
 ## **Características Generales**
 Entre las herramientas que posee ***AxiomaFrame***, enumeramos las siguientes:
 - ***Eloquent***, el mapeador de objetos relacionales utilizado por Laravel para simplificar las consultas y la manipulación de datos en una base de datos. Esta herramienta no solo supone una mejor relación con las bases de datos, sino también la posibilidad de conectarse con diversos sistemas de gestión de base de datos.
-- ***Smarty***, el motor de plantillas que permite mejorar la relación de las vistas del sistema con el lenguaje PHP, haciendo que el código sea mas sencillo de escribir, sin tener que usar los tag de PHP.
+- ***Twig***, el motor de plantillas que permite mejorar la relación de las vistas del sistema con el lenguaje PHP, haciendo que el código sea mas sencillo de escribir, sin tener que usar los tag de PHP.
 - ***Bootstrap***, en su versión 5.2 para lograr un buen diseño de las vistas. Se puede actualizar a la última versión disponible con solo acceder a la página oficial de Bootstrap.
 - ***Clases y helpers*** que podrán ser utilizados para validar datos, controlar permisos y roles, rutas amigables y muchas cosas mas. Esto permite al desarrollador escalar su aplicación sin tener que necesariamente migrar a otro framework.
 
@@ -14,8 +14,8 @@ Vía Composer se pueden instalar mas herramientas necesarias para el proyecto y,
 
 ## **Requisitos de Software**
 Para trabajar con AxiomaFrame necesitas tener instaladas las siguientes herramientas:
-- PHP 8 o superior.
-- MySQL 8 o superior.
+- PHP 8.1 o superior.
+- MySQL 8.0 o superior.
 - Composer (opcional)
 - Git
 
@@ -42,6 +42,16 @@ Considera los siguientes pasos:
 - Revisar la documentación para solucionar posibles inconvenientes.
 
 ## **Soporte y ayuda**
-Para facilitar el apoyo puedes comunicarte con contacto@profesorgaldames.cl
+Para facilitar el apoyo puedes comunicarte con segundogaldames@gmail.com
 
+## **Corrección de problemas con Eloquent**
+Si al momento de guardar datos en la base de datos utilizando Eloquent, da error de deprecación o compatibilidad desconocida o que implique a archivos que tu nunca has tocado en tu desarrollo (habitualmente relacionados con Eloquent), entonces hay un problema entre la version de PHP que estás usando con la versión de Eloquent que posee el sistema.
+- Caso 1: La versión de PHP es menor que la mínima exigida por Eloquent (menor a 8.1)
+- Caso 2: La versión de Eloquent es menor a la versión actual de tu PHP (mayor a 8.2)
+
+Para solucionarlo debes realizar los siguientes pasos:
+- Instalar en composer en tu computadora
+- Acceder al directorio de tu servidor, donde está tu proyecto y correr el comando "composer update"
+
+Con estas operaciones debiera restablecerse la normalidad. Si tienes algún otro problema envíame un email a segundogaldames@gmail.com
 

@@ -30,7 +30,7 @@ La carpeta que almacena los controladores necesarios para la aplicación es *con
 La lógica MVC nos indica que los controladores gestionarán las peticiones realizadas por un cliente en la aplicación, siendo intermediario entre las vistas de usuario y los modelos, los que a su vez, se encargan de gestionar los datos desde y hacia la base de datos. Cada método, en un controlador, realizará tareas únicas y específicas para cumplir con las buenas prácticas de programación.
 
 # Librerías de terceros
-La carpeta *libs* se encarga, en principio, de agrupar librerías de terceras partes, cuyo propósito es agregar alguna funcionalidad que, por defecto, no pudiera estar cubierta por el kit mínimo de instalación de ***AxiomaFrame***. Aunque se puede utilizar Composer para instalar de manera dinámica las librerías que necesitemos, existe un bajo, pero significativo número de librerías o plugins que no usan Composer y, si las requerimos, las podremos descargar en libs y usarlas en los controladores que lo necesiten. Un ejemplo de esto, es la utilización de Smarty, la que no se puede gestionar (al menos por ahora) a través de Composer, pero que podremos utilizarla a través de libs.
+La carpeta *libs* se encarga, en principio, de agrupar librerías de terceras partes, cuyo propósito es agregar alguna funcionalidad que, por defecto, no pudiera estar cubierta por el kit mínimo de instalación de ***AxiomaFrame***. Aunque se puede utilizar Composer para instalar de manera dinámica las librerías que necesitemos, existe un bajo, pero significativo número de librerías o plugins que no usan Composer y, si las requerimos, las podremos descargar en libs y usarlas en los controladores que lo necesiten. 
 
 # Modelos
 En la carpeta *models* podremos guardar los modelos de la aplicación, cuyo propósito esencial es gestionar la disponibilidad de los datos de la aplicación en la base de datos, tanto en procesos de entrada como en procesos de salida.
@@ -40,7 +40,7 @@ Por defecto, ***AxiomaFrame*** implementa dos modelos de ejemplo que, en princip
 # Public
 La carpeta public se encarga de agrupar los archivos de contenido estático de la aplicación; esto es, archivos de estilos (CSS, por sus siglas en inglés), archivos JavaScript de interacción con el usuario, imágenes y otros archivos que se requieran. Estos archivos tendrán la misión de hacer mas amigable la interacción entre usuarios y la aplicación.
 
-Por defecto, ***AxiomaFRame*** implementa bootstrap como gestor de estilos, pero se puede trabajar con estilos propios si así lo desea el desarrollador.
+Por defecto, ***AxiomaFrame*** implementa bootstrap como gestor de estilos, pero se puede trabajar con estilos propios si así lo desea el desarrollador.
 
 # Archivos temporales
 En el caso de ***AxiomaFrame***, se implementan archivos temporales que actúan como caché de las vistas que se crean en la aplicación a través de Smarty. La clase Smarty, provee un mecanismo de generación de archivos temporales para ayudar al sistema a recuperar vistas ya usadas por el usuario, generando mayor velocidad de respuesta. Esta carpeta no se comparte en el repositorio git por defecto, ya que está bloqueda por seguridad.
