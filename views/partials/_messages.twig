@@ -1,9 +1,9 @@
-{if isset($_error)}
+{% if msg_success %}
     <div style="margin-top: 40px;"></div>
-    <p class="alert alert-danger">{$_error}</p>
-{/if}
+    <p class="alert alert-success">{{ msg_success }}</p>
+{% endif %}
 
-{if isset($_mensaje)}
+{% if msg_error %}
     <div style="margin-top: 40px;"></div>
-    <p class="alert alert-success">{$_mensaje}</p>
-{/if}
+    <p class="alert alert-danger">{{ msg_error }}</p>
+{% endif %}
